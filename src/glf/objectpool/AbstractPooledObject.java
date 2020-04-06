@@ -1,10 +1,10 @@
 package glf.objectpool;
 
 /**
- * An abstract class that provides the constructor that {@link ObjectPool}
- * requires, as well as implementations of {@link #initialize()} and
- * {@link #release()}. Maintains a private boolean {@link #allocated} that
- * provides error-checking on the instance's life cycle.
+ * An abstract implementation of {@link Poolable} that provides the constructor
+ * that {@link ObjectPool} requires, as well as implementations of
+ * {@link #initialize()} and {@link #release()}. Maintains a private boolean
+ * {@link #allocated} that provides error-checking on the instance's life cycle.
  * 
  * @author Greg Frazier
  *

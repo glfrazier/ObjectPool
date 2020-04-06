@@ -16,7 +16,7 @@ import java.util.List;
  * 
  * A subclass of object pool that holds instances of <code>MyClass</code> must:
  * <ul>
- * <li>Extend <code>ObjectPool&lt;MyClass&gt;</li>
+ * <li>Extend <code>ObjectPool&lt;MyClass&gt;</code></li>
  * <li>Invoke <code>super(MyClass.class)</code> in its constructor</li>
  * <li>Provide a public method whereby clients obtain instances of
  * <code>MyClass</code>. Recommend that the method be named
@@ -32,13 +32,13 @@ import java.util.List;
  * <code>MyClass</code> instances can be returned to the pool after use.
  * 
  * An example of how to use <code>ObjectPool</code> and
- * {@link AbstractPooledObject} is the {@link RecordPool} class that is in the
+ * {@link AbstractPooledObject} is the {@link example.RecordPool} class that is in the
  * demo/ directory that accompanied this distribution.
  * 
  * @see Poolable
  * @see AbstractPooledObject
  * 
- * @author glfrazier
+ * @author Greg Frazier
  *
  * @param <E> the class whose instances are in the pool
  */

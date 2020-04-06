@@ -2,12 +2,11 @@ package glf.objectpool;
 
 /**
  * Implemented by objects that reside in object pools. It can also be
- * implemented by objects that are not pooled. This means that a service that
- * releases objects when finished with them can process objects that are not
- * allocated from a pool. They implement <code>release()</code> as a no-op, and
- * the object is garbage collected as normal.
+ * implemented by objects that are not pooled, with a no-op implementation of
+ * {@link #release()}. This means that a service that releases objects when
+ * finished with them can process objects that are not allocated from a pool.
  * 
- * @author glfrazier
+ * @author Greg Frazier
  *
  */
 public interface Poolable {
