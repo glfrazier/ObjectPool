@@ -1,7 +1,5 @@
 package example;
 
-import java.lang.reflect.Constructor;
-
 import glf.objectpool.AbstractPooledObject;
 import glf.objectpool.ObjectPool;
 
@@ -29,9 +27,4 @@ public class Record extends AbstractPooledObject {
 		return name;
 	}
 	
-	public static void main(String[] args) {
-		for(Constructor<?> c : Record.class.getDeclaredConstructors()) {
-			System.out.println("Constructor: " + c);
-		}
-	}
 }
