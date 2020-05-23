@@ -1,7 +1,7 @@
 package example;
 
-import glf.objectpool.AbstractPooledObject;
-import glf.objectpool.ObjectPool;
+import com.github.glfrazier.objectpool.AbstractPooledObject;
+import com.github.glfrazier.objectpool.ObjectPool;
 
 public class Record extends AbstractPooledObject {
 

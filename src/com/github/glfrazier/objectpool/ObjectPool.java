@@ -1,4 +1,4 @@
-package glf.objectpool;
+package com.github.glfrazier.objectpool;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

@@ -1,4 +1,4 @@
-package glf.objectpool;
+package com.github.glfrazier.objectpool;
 
 /**
  * An abstract implementation of {@link Poolable} that provides the constructor
@@ -49,7 +49,8 @@ public class AbstractPooledObject implements Poolable {
 	 */
 	public final synchronized void release() {
 		if (!allocated) {
-			throw new IllegalStateException("Freeing an already-freed instance.");
+			throw new IllegalStateException("Freeing an already-freed instance. There have been "
+					+ pool.getNumberOfAllocations() + " allocation events.");
 		}
 		allocated = false;
 		pool.releaseInstance(this);

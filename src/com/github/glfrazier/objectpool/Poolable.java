@@ -1,4 +1,4 @@
-package glf.objectpool;
+package com.github.glfrazier.objectpool;
 
 /**
  * Implemented by objects that reside in object pools. It can also be

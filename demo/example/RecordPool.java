@@ -1,6 +1,6 @@
 package example;
 
-import glf.objectpool.ObjectPool;
+import com.github.glfrazier.objectpool.ObjectPool;
 
 /**
  * An object pool that holds instances of {@link Record}.
