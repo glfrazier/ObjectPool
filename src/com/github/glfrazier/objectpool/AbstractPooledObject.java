@@ -1,5 +1,5 @@
 package com.github.glfrazier.objectpool;
-
+ 	
 /**
  * An abstract implementation of {@link Poolable} that provides the constructor
  * that {@link ObjectPool} requires, as well as implementations of
@@ -36,7 +36,7 @@ public class AbstractPooledObject implements Poolable {
 	 * the client, it must be <i>initialized</i>. Checks and toggles
 	 * {@link #allocated}.
 	 */
-	protected final synchronized void initialize() {
+	protected synchronized void initialize() {
 		if (allocated) {
 			throw new IllegalStateException("Initializing an already-allocated instance.");
 		}
