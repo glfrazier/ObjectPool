@@ -1,4 +1,4 @@
-package example;
+package com.github.glfrazier.objectpool.example;
 
 import com.github.glfrazier.objectpool.AbstractPooledObject;
 import com.github.glfrazier.objectpool.ObjectPool;

@@ -1,4 +1,4 @@
-package example;
+package com.github.glfrazier.objectpool.example;
 
 public class Demo extends Thread {
 	static RecordPool pool = new RecordPool();
