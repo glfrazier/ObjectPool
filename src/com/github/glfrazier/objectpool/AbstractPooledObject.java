@@ -1,5 +1,7 @@
 package com.github.glfrazier.objectpool;
- 	
+
+import java.io.Serializable;
+
 /**
  * An abstract implementation of {@link Poolable} that provides the constructor
  * that {@link ObjectPool} requires, as well as implementations of
@@ -9,8 +11,13 @@ package com.github.glfrazier.objectpool;
  * @author Greg Frazier
  *
  */
-public class AbstractPooledObject implements Poolable {
+public class AbstractPooledObject implements Poolable, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * Ensures that already-allocated objects are not reallocated, and
 	 * already-released objects are not re-released.
@@ -19,7 +26,7 @@ public class AbstractPooledObject implements Poolable {
 	/**
 	 * The pool that this instance came from and will be returned to.
 	 */
-	private ObjectPool<AbstractPooledObject> pool;
+	private transient ObjectPool<AbstractPooledObject> pool;
 
 	/**
 	 * Construct a new instance of the pooled object.
@@ -29,6 +36,10 @@ public class AbstractPooledObject implements Poolable {
 	@SuppressWarnings("unchecked")
 	public AbstractPooledObject(ObjectPool<?> pool) {
 		this.pool = (ObjectPool<AbstractPooledObject>) pool;
+	}
+	
+	public AbstractPooledObject() {
+		pool = null;
 	}
 
 	/**
@@ -47,10 +58,9 @@ public class AbstractPooledObject implements Poolable {
 	 * Returns the instance to the pool, making it available to future allocations.
 	 * Also, checks and toggles {@link #allocated}.
 	 */
-	public final synchronized void release() {
-		if (!allocated) {
-			throw new IllegalStateException("Freeing an already-freed instance. There have been "
-					+ pool.getNumberOfAllocations() + " allocation events.");
+	public synchronized void release() {
+		if (!allocated || pool == null) {
+			return;
 		}
 		allocated = false;
 		pool.releaseInstance(this);

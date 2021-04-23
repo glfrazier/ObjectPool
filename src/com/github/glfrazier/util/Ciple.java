@@ -10,36 +10,30 @@ import com.github.glfrazier.objectpool.ObjectPool;
  * @param <T> the first of two values
  * @param <U> the second of two values
  */
-public class Ciple<T,U,V,W,X>  extends AbstractPooledObject {
+public class Ciple<T,U,V,W,X>  extends Quaple<T,U,V,W> {
 
-	private static CiplePool pool = new CiplePool();
+	protected X e;
 	
-	public T a;
-	public U b;
-	public V c;
-	public W d;
-	public X e;
+	public Ciple() {
+		super();
+	}
 	
 	public Ciple(ObjectPool<?> pool) {
 		super(pool);
 	}
 	
 	protected void initialize() {
-		a=null;
-		b=null;
-		c=null;
-		d=null;
 		e=null;
 		super.initialize();
 	}
 	
+	public final X e() {
+		return e;
+	}
+	
 	@SuppressWarnings("rawtypes")
 	public static Ciple alloc(Object a, Object b, Object c, Object d, Object e) {
-		Ciple ciple = pool.allocate();
-		ciple.a = a;
-		ciple.b = b;
-		ciple.c = c;
-		ciple.d = d;
+		Ciple ciple = (Ciple)Quaple.alloc(a,b,c,d);
 		ciple.e = e;
 		return ciple;
 	}

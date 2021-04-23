@@ -1,8 +1,6 @@
 package com.github.glfrazier.util;
 
-import com.github.glfrazier.objectpool.AbstractPooledObject;
 import com.github.glfrazier.objectpool.ObjectPool;
-import com.github.glfrazier.objectpool.Poolable;
 
 /**
  * A struct that holds three values. Useful for methods that want to return
@@ -14,18 +12,18 @@ import com.github.glfrazier.objectpool.Poolable;
  * @param <U> the second of three values
  * @param <V> the third of three values
  */
-public class Tuple<T, U, V> extends AbstractPooledObject {
+public class Tuple<T, U, V> extends Duple<T, U> {
 
-	private static TuplePool pool = new TuplePool();
-
-	public T a;
-	public U b;
-	public V c;
+	protected V c;
 
 	public Tuple(ObjectPool<?> pool) {
 		super(pool);
 	}
 	
+	public Tuple() {
+		super();
+	}
+
 	protected void initialize() {
 		a=null;
 		b=null;
@@ -33,12 +31,17 @@ public class Tuple<T, U, V> extends AbstractPooledObject {
 		super.initialize();
 	}
 	
+	public final V c() {
+		return c;
+	}
+	
+	@SuppressWarnings("rawtypes")
 	public static Tuple alloc(Object a, Object b, Object c) {
-		Tuple d = pool.allocate();
-		d.a = a;
-		d.b = b;
-		d.c = c;
-		return d;
+		Tuple tuple = (Tuple)pool.allocate();
+		tuple.a = a;
+		tuple.b = b;
+		tuple.c = c;
+		return tuple;
 	}
 
 }
