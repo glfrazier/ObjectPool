@@ -6,7 +6,7 @@
 
   <groupId>com.github.glfrazier</groupId>
   <artifactId>ObjectPool</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <name>Object Pool</name>
   <description>An object pool, allowing classes to avoid garbage collection.</description>
 
