@@ -59,6 +59,10 @@ public class Duple<T, U> extends AbstractPooledObject implements Serializable {
 	public String toString() {
 		return "{" + a + ", " + b + "}";
 	}
+	
+	public int size() {
+		return 2;
+	}
 
 	@Override
 	public void release() {

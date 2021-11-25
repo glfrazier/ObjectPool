@@ -15,7 +15,7 @@ import com.github.glfrazier.objectpool.ObjectPool;
 public class Hexle<T, U, V, W, X, Y> extends Ciple<T, U, V, W, X> {
 
 	protected Y f;
-	
+
 	public Hexle() {
 		super();
 	}
@@ -31,6 +31,10 @@ public class Hexle<T, U, V, W, X, Y> extends Ciple<T, U, V, W, X> {
 
 	public final Y f() {
 		return f;
+	}
+
+	public int size() {
+		return 6;
 	}
 
 	@SuppressWarnings("rawtypes")

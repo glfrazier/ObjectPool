@@ -31,6 +31,11 @@ public class Tuple<T, U, V> extends Duple<T, U> {
 		super.initialize();
 	}
 	
+
+	public int size() {
+		return 3;
+	}
+	
 	public final V c() {
 		return c;
 	}

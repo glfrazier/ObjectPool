@@ -30,6 +30,10 @@ public class Quaple<T,U,V,W>  extends Tuple<T,U,V> {
 		return d;
 	}
 	
+	public int size() {
+		return 4;
+	}
+	
 	@SuppressWarnings("rawtypes")
 	public static Quaple alloc(Object a, Object b, Object c, Object d) {
 		Quaple quaple = (Quaple)Tuple.alloc(a,b,c);
