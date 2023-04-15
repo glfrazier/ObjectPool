@@ -133,6 +133,10 @@ public class SystemProperties {
 		return getNumericProperty(propName, Integer.class).intValue();
 	}
 
+	public static long getLongProperty(String propName) {
+		return getNumericProperty(propName, Integer.class).longValue();
+	}
+
 	public static double getDoubleProperty(String propName) {
 		return getNumericProperty(propName, Double.class).doubleValue();
 	}
@@ -186,8 +190,35 @@ public class SystemProperties {
 		return getNumericProperty(propName, defaultValue).intValue();
 	}
 
+	public static long getLongProperty(String propName, int defaultValue) {
+		return getNumericProperty(propName, defaultValue).longValue();
+	}
+
 	public static double getDoubleProperty(String propName, double defaultValue) {
 		return getNumericProperty(propName, defaultValue).doubleValue();
+	}
+
+	public static boolean getBooleanProperty(String propName) {
+		String b = getStringProperty(propName);
+		return buildBoolean(b);
+	}
+
+	public static boolean getBooleanProperty(String propName, boolean defaultValue) {
+		String b = System.getProperty(propName, "");
+		if (b.equals("")) {
+			return defaultValue;
+		}
+		return buildBoolean(b);
+	}
+
+	private static boolean buildBoolean(String b) {
+		if (b.equalsIgnoreCase("true") || b.equalsIgnoreCase("t") || b.equalsIgnoreCase("1")) {
+			return true;
+		}
+		if (b.equalsIgnoreCase("false") || b.equalsIgnoreCase("f") || b.equalsIgnoreCase("0")) {
+			return false;
+		}
+		return Boolean.parseBoolean(b);
 	}
 
 }
