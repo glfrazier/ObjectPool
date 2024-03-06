@@ -93,17 +93,22 @@ public class SystemProperties {
 		if (System.getProperty(propName) == null) {
 			return nullPropertyResponse(propName);
 		}
-		if (type.equals(Float.class)) {
-			return Float.parseFloat(System.getProperty(propName));
-		}
-		if (type.equals(Double.class)) {
-			return Double.parseDouble(System.getProperty(propName));
-		}
-		if (type.equals(Integer.class)) {
-			return Integer.parseInt(System.getProperty(propName));
-		}
-		if (type.equals(Long.class)) {
-			return Long.parseLong(System.getProperty(propName));
+		try {
+			if (type.equals(Float.class)) {
+				return Float.parseFloat(System.getProperty(propName));
+			}
+			if (type.equals(Double.class)) {
+				return Double.parseDouble(System.getProperty(propName));
+			}
+			if (type.equals(Integer.class)) {
+				return Integer.parseInt(System.getProperty(propName));
+			}
+			if (type.equals(Long.class)) {
+				return Long.parseLong(System.getProperty(propName));
+			}
+		} catch (Throwable t) {
+			throw new IllegalArgumentException("Property=" + propName + ": received exception " + t + " while parsing "
+					+ System.getProperty(propName));
 		}
 		throw new IllegalArgumentException(
 				"getNumericProperty only understand Double, Float, Long and Integer, not " + type);
